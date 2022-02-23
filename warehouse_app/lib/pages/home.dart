@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:warehouse_app/models/category.dart';
 import 'package:warehouse_app/models/product.dart';
 import 'package:warehouse_app/models/warehouse.dart';
+import 'package:warehouse_app/pages/details.dart';
 import 'package:warehouse_app/providers/category.dart';
 import 'package:warehouse_app/providers/product.dart';
 import 'package:warehouse_app/providers/werehouse.dart';
@@ -45,7 +46,7 @@ class ProductView extends StatelessWidget {
     return Scaffold(
       body: Consumer<ProductProvider>(
         builder: (context, value, child) {
-          List<Product> products = value.products;
+          final List<Product> products = value.products;
           return Padding(
             padding: const EdgeInsets.only(right: 5),
             child: ListView.separated(
@@ -66,7 +67,10 @@ class ProductView extends StatelessWidget {
 }
 
 class ProductListTile extends StatefulWidget {
-  const ProductListTile({Key? key, required this.product}) : super(key: key);
+  const ProductListTile({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
   final Product product;
   @override
   State<ProductListTile> createState() => _ProductListTileState();
@@ -77,7 +81,21 @@ class _ProductListTileState extends State<ProductListTile> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {},
+      onTap: () {
+        final ProductProvider productProvider = Provider.of<ProductProvider>(
+          context,
+          listen: false,
+        );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductDetailsView(
+              productProvider: productProvider,
+              product: widget.product,
+            ),
+          ),
+        );
+      },
       title: Text(widget.product.title),
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
