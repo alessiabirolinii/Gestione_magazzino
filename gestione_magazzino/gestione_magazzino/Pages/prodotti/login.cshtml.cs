@@ -37,13 +37,20 @@ namespace gestione_magazzino.Pages.prodotti
 
                 streamWriter.Write(json);
             }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponseAsync().Result;
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            try
             {
-                var result = streamReader.ReadToEnd();
-                Class.token = JObject.Parse(result)["access_token"].ToString();
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponseAsync().Result;
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    Class.token = JObject.Parse(result)["access_token"].ToString();
+                }
             }
+            catch (Exception)
+            {
+
+            }
+            
         }
     }
 }
