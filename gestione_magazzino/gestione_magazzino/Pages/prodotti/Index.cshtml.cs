@@ -59,7 +59,7 @@ namespace gestione_magazzino.Pages.prodotti
             HttpResponseMessage response = client.Send(request);
 
             Task<string> responseBody = response.Content.ReadAsStringAsync();
-            var response2 = JsonConvert.DeserializeObject<List<Prodotto>>(JObject.Parse(responseBody.Result)["prodotto"].ToString());
+            var response2 = JsonConvert.DeserializeObject<List<Prodotto>>(JObject.Parse(responseBody.Result)["prodotti"].ToString());
             eleProdotto = response2;
         }
     }

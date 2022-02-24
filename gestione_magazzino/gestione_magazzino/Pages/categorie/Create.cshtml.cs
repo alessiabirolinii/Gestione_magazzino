@@ -25,7 +25,7 @@ namespace gestione_magazzino.Pages.categorie
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Class.token);
 
-            var result = client.GetStringAsync(URL + "categorie");
+            var result = client.GetStringAsync(URL + "categoria");
 
             var json = JsonConvert.SerializeObject(new User()
             {
@@ -34,7 +34,7 @@ namespace gestione_magazzino.Pages.categorie
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
-                RequestUri = new Uri(URL + "categorie"),
+                RequestUri = new Uri(URL + "categoria"),
                 Content = new StringContent(json, Encoding.UTF8, MediaTypeNames.Application.Json)
             };
 
