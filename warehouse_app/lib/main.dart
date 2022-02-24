@@ -109,6 +109,15 @@ class _ProviderInitializerState extends State<ProviderInitializer> {
       warehouseProvider: warehouseProvider,
     );
 
+    final AuthProvider authProvider =
+        Provider.of<AuthProvider>(context, listen: false);
+
+    if (authProvider.email != "ciao@ciao.it") {
+      categoryProvider.categories = [];
+      warehouseProvider.warehouses = [];
+      productProvider.products = [];
+    }
+
     if (mounted) {
       setState(() => isInitialized = true);
     }

@@ -186,7 +186,21 @@ class _CategoryListTileState extends State<CategoryListTile> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {},
+      onTap: () {
+        final CategoryProvider categoryProvider = Provider.of<CategoryProvider>(
+          context,
+          listen: false,
+        );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CategoryDetailsView(
+              categoryProvider: categoryProvider,
+              category: widget.category,
+            ),
+          ),
+        );
+      },
       title: Text(widget.category.name),
       trailing: TextButton(
         onPressed: () async {
@@ -267,7 +281,22 @@ class _WarehouseListTileState extends State<WarehouseListTile> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {},
+      onTap: () {
+        final WarehouseProvider warehouseProvider =
+            Provider.of<WarehouseProvider>(
+          context,
+          listen: false,
+        );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => WarehouseDetailsView(
+              warehouseProvider: warehouseProvider,
+              warehouse: widget.warehouse,
+            ),
+          ),
+        );
+      },
       title: Text(widget.warehouse.name),
       subtitle: Text("Indirizzo: ${widget.warehouse.address}"),
       trailing: TextButton(

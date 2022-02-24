@@ -190,14 +190,21 @@ class _RegisterPageState extends State<RegisterPage> {
                               context,
                               listen: false,
                             );
-                            await authProvider.register(
-                              UserRegisterDTO(
-                                password: passwordController.text,
-                                email: emailController.text,
-                                name: nameController.text,
-                                surname: surnameController.text,
-                              ),
-                            );
+                            try {
+                              await authProvider.register(
+                                UserRegisterDTO(
+                                  password: passwordController.text,
+                                  email: emailController.text,
+                                  name: nameController.text,
+                                  surname: surnameController.text,
+                                ),
+                              );
+                            } catch (e) {
+                              if ((e as dynamic).message ==
+                                  "Email already taken") {
+                                setState(() => formError = true);
+                              }
+                            }
                             if (mounted) {
                               setState(() {
                                 isLoading = false;

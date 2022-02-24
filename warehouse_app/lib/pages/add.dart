@@ -264,6 +264,12 @@ class _ProductAddViewState extends State<ProductAddView> {
                             ),
                           );
 
+                          magazzinoSelezionato = null;
+                          categoriaSelezionata = null;
+                          titoloController.clear();
+                          priceController.clear();
+                          quantityController.clear();
+
                           if (mounted) {
                             setState(() {
                               isLoading = false;
@@ -359,6 +365,8 @@ class _CategoryAddViewState extends State<CategoryAddView> {
                             name: nameController.text,
                           ),
                         );
+
+                        nameController.clear();
 
                         if (mounted) {
                           setState(() {
@@ -480,6 +488,9 @@ class _WarehouseAddViewState extends State<WarehouseAddView> {
                               address: addressController.text,
                             ),
                           );
+
+                          nameController.clear();
+                          addressController.clear();
 
                           if (mounted) {
                             setState(() {
