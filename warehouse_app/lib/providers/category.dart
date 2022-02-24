@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:warehouse_app/models/category.dart';
 
 class CategoryProvider with ChangeNotifier {
-  final List<Category> categories = [
+  List<Category> categories = [
     Category(code: 1, name: "Sport"),
     Category(code: 1, name: "Arredamento"),
     Category(code: 3, name: "Moto e Macchine"),

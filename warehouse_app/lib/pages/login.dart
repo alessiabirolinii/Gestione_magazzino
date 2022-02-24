@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:provider/provider.dart';
 import 'package:warehouse_app/models/user.dart';
 import 'package:warehouse_app/providers/auth.dart';
@@ -141,10 +140,12 @@ class _LoginPageState extends State<LoginPage> {
                               listen: false,
                             );
                             try {
-                              await authProvider.login(UserLoginDTO(
-                                password: passwordController.text,
-                                email: emailController.text,
-                              ));
+                              await authProvider.login(
+                                UserLoginDTO(
+                                  password: passwordController.text,
+                                  email: emailController.text,
+                                ),
+                              );
                             } catch (e) {
                               if (mounted) {
                                 if ((e as dynamic).message ==
@@ -181,23 +182,24 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               // Expanded(child: Container()),
-              Center(
-                child: TextButton(
-                  onPressed: () async {
-                    final AuthProvider authProvider = Provider.of<AuthProvider>(
-                      context,
-                      listen: false,
-                    );
-                    await authProvider.login(
-                      UserLoginDTO(
-                        password: "password",
-                        email: "prova@prova.it",
-                      ),
-                    );
-                  },
-                  child: const Text("prova login"),
-                ),
-              ),
+              // Center(
+              //   child: TextButton(
+              //     onPressed: () async {
+              //       final AuthProvider authProvider = Provider.of<AuthProvider>(
+              //         context,
+              //         listen: false,
+              //       );
+
+              //       await authProvider.login(
+              //         UserLoginDTO(
+              //           password: "password",
+              //           email: "prova@prova.it",
+              //         ),
+              //       );
+              //     },
+              //     child: const Text("prova login"),
+              //   ),
+              // ),
             ],
           ),
         ),

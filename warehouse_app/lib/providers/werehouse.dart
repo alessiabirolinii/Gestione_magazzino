@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:warehouse_app/models/warehouse.dart';
 
 class WarehouseProvider with ChangeNotifier {
-  final List<Warehouse> warehouses = [
+  List<Warehouse> warehouses = [
     Warehouse(id: 1, name: "Edificio A", address: "Via primo, 1"),
     Warehouse(id: 2, name: "Edificio B", address: "Via secondo, 2"),
     Warehouse(id: 3, name: "Edificio C", address: "Via terzo, 3"),
